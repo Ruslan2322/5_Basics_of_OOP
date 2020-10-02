@@ -1,1 +1,51 @@
+package module_05.oop.practice.task_01;
+
+import java.util.ArrayList;
+
+/*Задача 1.
+Создать объект класса Текстовый файл, используя классы Файл, Директория. Методы: создать, переименовать,
+вывести на консоль содержимое, дополнить, удалить.*/
+
+public class Main {
+	public static void main(String[] args) {
+		
+	Directory directory = new Directory("Jo Abercromi");
+   
+	// Создаём файлы через конструктор и вносим его в список
+	ArrayList<TextFile>file = new ArrayList<>();
+	TextFile tFile = new TextFile(directory, "Better serve cold ", "Abercromi ussual wrote about dark fantasy." );
+	file.add(tFile);
+	
+	TextFile tFile2 = new TextFile(directory,"The best argument of kings", "This novel about mistyc kingdom and four companions ");
+	file.add(tFile2);
+	
+	// Метод Принта директории, имени файла и строки
+	printText(file, tFile);
+	printText(file, tFile2);
+	
+	// Метод переименования имени файла
+	tFile.renameFile(tFile);
+	printText(file, tFile);
+	
+	// Метод добавления текста
+	tFile2.addText(tFile2);
+	printText(file, tFile2);
+	
+	// Метод удаления 
+	file.remove(tFile);
+	file.remove(tFile2);
+	printText(file, tFile);
+	printText(file, tFile2);
+}
+		
+    public static void printText(ArrayList<TextFile> file, TextFile tFile) {
+    	try {
+    	int printIndex = file.indexOf(tFile);
+		System.out.println(file.get(printIndex));
+    	}
+    	catch (IndexOutOfBoundsException e) {
+    		System.out.println("File was not found!");
+    	}
+    }
+}
 
